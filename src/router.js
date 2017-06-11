@@ -39,15 +39,16 @@ const Routers = function ({ history, app }) {
             }, 'user')
           },
         },
-        // {
-      //    path: 'user/:id',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        registerModel(app, require('./models/user/detail'))
-      //        cb(null, require('./routes/user/detail/'))
-      //      }, 'user-detail')
-      //    },
-      //  }, {
+         {
+          path: 'user/:id',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/user/detail'))
+              cb(null, require('./routes/user/detail/'))
+            }, 'user-detail')
+          },
+        },
+        //{
       //    path: 'login',
       //    getComponent (nextState, cb) {
       //      require.ensure([], require => {

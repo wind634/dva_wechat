@@ -16,13 +16,14 @@ class List extends Component {
   }
 
   handleMenuClick = (record, e) => {
+    const onDeleteItem = this.props.onDeleteItem;
     if (e.key === '1') {
       this.props.onEditItem(record)
     } else if (e.key === '2') {
       confirm({
         title: 'Are you sure delete this record?',
         onOk () {
-          this.props.onDeleteItem(record.id)
+          onDeleteItem(record.id)
         },
       })
     }
@@ -79,7 +80,7 @@ class List extends Component {
         key: 'operation',
         width: 100,
         render: (text, record) => {
-          return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }]} />
+          return <DropOption onMenuClick={e => this.handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }]} />
         },
       },
     ]
