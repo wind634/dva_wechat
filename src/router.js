@@ -65,49 +65,50 @@ const Routers = function ({ history, app }) {
             }, 'request')
           },
         },
-        // {
-      //    path: 'UIElement/iconfont',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/iconfont/'))
-      //      }, 'UIElement-iconfont')
-      //    },
-      //  }, {
-      //    path: 'UIElement/search',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/search/'))
-      //      }, 'UIElement-search')
-      //    },
-      //  }, {
-      //    path: 'UIElement/dropOption',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/dropOption/'))
-      //      }, 'UIElement-dropOption')
-      //    },
-      //  }, {
-      //    path: 'UIElement/layer',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/layer/'))
-      //      }, 'UIElement-layer')
-      //    },
-      //  }, {
-      //    path: 'UIElement/dataTable',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/dataTable/'))
-      //      }, 'UIElement-dataTable')
-      //    },
-      //  }, {
-      //    path: 'UIElement/editor',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/UIElement/editor/'))
-      //      }, 'UIElement-editor')
-      //    },
-      //  }, {
+         {
+          path: 'UIElement/iconfont',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/iconfont/'))
+            }, 'UIElement-iconfont')
+          },
+        }, {
+          path: 'UIElement/search',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/search/'))
+            }, 'UIElement-search')
+          },
+        }, {
+          path: 'UIElement/dropOption',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/dropOption/'))
+            }, 'UIElement-dropOption')
+          },
+        }, {
+          path: 'UIElement/layer',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/layer/'))
+            }, 'UIElement-layer')
+          },
+        }, {
+          path: 'UIElement/dataTable',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/dataTable/'))
+            }, 'UIElement-dataTable')
+          },
+        }, {
+          path: 'UIElement/editor',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/UIElement/editor/'))
+            }, 'UIElement-editor')
+          },
+        },
+        //{
       //    path: 'chart/lineChart',
       //    getComponent (nextState, cb) {
       //      require.ensure([], require => {
