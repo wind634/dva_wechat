@@ -108,28 +108,28 @@ const Routers = function ({ history, app }) {
             }, 'UIElement-editor')
           },
         },
-        //{
-      //    path: 'chart/lineChart',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/chart/lineChart/'))
-      //      }, 'chart-lineChart')
-      //    },
-      //  }, {
-      //    path: 'chart/barChart',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/chart/barChart/'))
-      //      }, 'chart-barChart')
-      //    },
-      //  }, {
-      //    path: 'chart/areaChart',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/chart/areaChart/'))
-      //      }, 'chart-areaChart')
-      //    },
-      //  },
+        {
+          path: 'chart/lineChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/lineChart/'))
+            }, 'chart-lineChart')
+          },
+        }, {
+          path: 'chart/barChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/barChart/'))
+            }, 'chart-barChart')
+          },
+        }, {
+          path: 'chart/areaChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/areaChart/'))
+            }, 'chart-areaChart')
+          },
+        },
          {
           path: 'post',
           getComponent (nextState, cb) {
