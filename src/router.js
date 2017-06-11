@@ -56,14 +56,16 @@ const Routers = function ({ history, app }) {
       //        cb(null, require('./routes/login/'))
       //      }, 'login')
       //    },
-      //  }, {
-      //    path: 'request',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/request/'))
-      //      }, 'request')
-      //    },
-      //  }, {
+      //  },
+         {
+          path: 'request',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/request/'))
+            }, 'request')
+          },
+        },
+        // {
       //    path: 'UIElement/iconfont',
       //    getComponent (nextState, cb) {
       //      require.ensure([], require => {
@@ -126,15 +128,17 @@ const Routers = function ({ history, app }) {
       //        cb(null, require('./routes/chart/areaChart/'))
       //      }, 'chart-areaChart')
       //    },
-      //  }, {
-      //    path: 'post',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        registerModel(app, require('./models/post'))
-      //        cb(null, require('./routes/post/'))
-      //      }, 'post')
-      //    },
-      //  }, {
+      //  },
+         {
+          path: 'post',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/post'))
+              cb(null, require('./routes/post/'))
+            }, 'post')
+          },
+        },
+        // {
       //    path: '*',
       //    getComponent (nextState, cb) {
       //      require.ensure([], require => {
