@@ -139,14 +139,14 @@ const Routers = function ({ history, app }) {
             }, 'post')
           },
         },
-        // {
-      //    path: '*',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        cb(null, require('./routes/error/'))
-      //      }, 'error')
-      //    },
-      //  },
+         {
+          path: '*',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/error/'))
+            }, 'error')
+          },
+        },
       ],
     },
   ]
