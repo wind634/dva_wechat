@@ -15,9 +15,12 @@ class Bread extends Component {
   render() {
     // 匹配当前路由
     let pathArray = []
-    let current
+    let current;
+
+    const pathname = this.props.location.pathname;
+
     for (let index in this.props.menu) {
-      if (this.props.menu[index].router && pathToRegexp(this.props.menu[index].router).exec(this.props.location.pathname)) {
+      if (this.props.menu[index].router && pathToRegexp(this.props.menu[index].router).exec(pathname)) {
         current = this.props.menu[index]
         break
       }
