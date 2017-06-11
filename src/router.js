@@ -48,15 +48,15 @@ const Routers = function ({ history, app }) {
             }, 'user-detail')
           },
         },
-        //{
-      //    path: 'login',
-      //    getComponent (nextState, cb) {
-      //      require.ensure([], require => {
-      //        registerModel(app, require('./models/login'))
-      //        cb(null, require('./routes/login/'))
-      //      }, 'login')
-      //    },
-      //  },
+        {
+          path: 'login',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/login'))
+              cb(null, require('./routes/login/'))
+            }, 'login')
+          },
+        },
          {
           path: 'request',
           getComponent (nextState, cb) {
