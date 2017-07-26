@@ -1,30 +1,22 @@
-import React,{ Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './quote.less'
 
-
-class Quote extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className={styles.quote}>
-        <div className={styles.inner}>
-          {this.props.content}
-        </div>
-        <div className={styles.footer}>
-          <div className={styles.description}>
-            <p>-{this.props.name}-</p>
-            <p>{this.props.title}</p>
-          </div>
-          <div className={styles.avatar} style={{ backgroundImage: `url(${this.props.avatar})` }} />
-        </div>
+function Quote ({ name, content, title, avatar }) {
+  return (
+    <div className={styles.quote}>
+      <div className={styles.inner}>
+        {content}
       </div>
-    )
-  }
-
+      <div className={styles.footer}>
+        <div className={styles.description}>
+          <p>-{name}-</p>
+          <p>{title}</p>
+        </div>
+        <div className={styles.avatar} style={{ backgroundImage: `url(${avatar})` }} />
+      </div>
+    </div>
+  )
 }
 
 Quote.propTypes = {

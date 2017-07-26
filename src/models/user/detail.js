@@ -11,6 +11,7 @@ export default {
 
   subscriptions: {
     setup ({ dispatch, history }) {
+      console.log("setup...")
       history.listen(() => {
         const match = pathToRegexp('/user/:id').exec(location.pathname)
         if (match) {
@@ -23,7 +24,7 @@ export default {
   effects: {
     *query ({
       payload,
-      }, { call, put }) {
+    }, { call, put }) {
       const data = yield call(query, payload)
       const { success, message, status, ...other } = data
       if (success) {

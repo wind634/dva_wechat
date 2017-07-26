@@ -29,8 +29,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/dashboard/'))
             }, 'dashboard')
           },
-        },
-       {
+        }, {
           path: 'user',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -38,8 +37,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/user/'))
             }, 'user')
           },
-        },
-         {
+        }, {
           path: 'user/:id',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -47,8 +45,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/user/detail/'))
             }, 'user-detail')
           },
-        },
-        {
+        }, {
           path: 'login',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -56,16 +53,14 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/login/'))
             }, 'login')
           },
-        },
-         {
+        }, {
           path: 'request',
           getComponent (nextState, cb) {
             require.ensure([], require => {
               cb(null, require('./routes/request/'))
             }, 'request')
           },
-        },
-         {
+        }, {
           path: 'UIElement/iconfont',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -107,8 +102,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/UIElement/editor/'))
             }, 'UIElement-editor')
           },
-        },
-        {
+        }, {
           path: 'chart/lineChart',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -129,8 +123,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/chart/areaChart/'))
             }, 'chart-areaChart')
           },
-        },
-         {
+        }, {
           path: 'post',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -138,8 +131,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/post/'))
             }, 'post')
           },
-        },
-         {
+        }, {
           path: '*',
           getComponent (nextState, cb) {
             require.ensure([], require => {

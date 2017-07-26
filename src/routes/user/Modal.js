@@ -1,4 +1,4 @@
-import React, { Component }  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Input, InputNumber, Radio, Modal, Cascader } from 'antd'
 import city from '../../utils/city'
@@ -14,125 +14,127 @@ const formItemLayout = {
   },
 }
 
-class modal extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  handleOk = () => {
-    this.props.form.validateFields((errors) => {
+const modal = ({
+  item = {},
+  onOk,
+  form: {
+    getFieldDecorator,
+    validateFields,
+    getFieldsValue,
+  },
+  ...modalProps
+}) => {
+  const handleOk = () => {
+    validateFields((errors) => {
       if (errors) {
         return
       }
       const data = {
-        ... this.props.form.getFieldsValue(),
-        key: this.props.item.key,
+        ...getFieldsValue(),
+        key: item.key,
       }
       data.address = data.address.join(' ')
-      this.props.onOk(data)
+      onOk(data)
     })
   }
 
-  render() {
-
-    const modalOpts = {
-      ...this.props,
-      onOk: this.handleOk,
-    }
-
-    return (
-      <Modal {...modalOpts}>
-        <Form layout="horizontal">
-          <FormItem label="Name" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('name', {
-              initialValue: this.props.item.name,
-              rules: [
-                {
-                  required: true,
-                },
-              ],
-            })(<Input />)}
-          </FormItem>
-          <FormItem label="NickName" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('nickName', {
-              initialValue: this.props.item.nickName,
-              rules: [
-                {
-                  required: true,
-                },
-              ],
-            })(<Input />)}
-          </FormItem>
-          <FormItem label="Gender" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('isMale', {
-              initialValue: this.props.item.isMale,
-              rules: [
-                {
-                  required: true,
-                  type: 'boolean',
-                },
-              ],
-            })(
-              <Radio.Group>
-                <Radio value>Male</Radio>
-                <Radio value={false}>Female</Radio>
-              </Radio.Group>
-            )}
-          </FormItem>
-          <FormItem label="Age" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('age', {
-              initialValue: this.props.item.age,
-              rules: [
-                {
-                  required: true,
-                  type: 'number',
-                },
-              ],
-            })(<InputNumber min={18} max={100} />)}
-          </FormItem>
-          <FormItem label="Phone" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('phone', {
-              initialValue: this.props.item.phone,
-              rules: [
-                {
-                  required: true,
-                  pattern: /^1[34578]\d{9}$/,
-                  message: 'The input is not valid phone!',
-                },
-              ],
-            })(<Input />)}
-          </FormItem>
-          <FormItem label="E-mail" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('email', {
-              initialValue: this.props.item.email,
-              rules: [
-                {
-                  required: true,
-                  pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
-                  message: 'The input is not valid E-mail!',
-                },
-              ],
-            })(<Input />)}
-          </FormItem>
-          <FormItem label="Address" hasFeedback {...formItemLayout}>
-            {this.props.form.getFieldDecorator('address', {
-              initialValue: this.props.item.address && this.props.item.address.split(' '),
-              rules: [
-                {
-                  required: true,
-                },
-              ],
-            })(<Cascader
-              size="large"
-              style={{ width: '100%' }}
-              options={city}
-              placeholder="Pick an address"
-            />)}
-          </FormItem>
-        </Form>
-      </Modal>)
+  const modalOpts = {
+    ...modalProps,
+    onOk: handleOk,
   }
+
+  return (
+    <Modal {...modalOpts}>
+      <Form layout="horizontal">
+        <FormItem label="Name" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name', {
+            initialValue: item.name,
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Input />)}
+        </FormItem>
+        <FormItem label="NickName" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('nickName', {
+            initialValue: item.nickName,
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Input />)}
+        </FormItem>
+        <FormItem label="Gender" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('isMale', {
+            initialValue: item.isMale,
+            rules: [
+              {
+                required: true,
+                type: 'boolean',
+              },
+            ],
+          })(
+            <Radio.Group>
+              <Radio value>Male</Radio>
+              <Radio value={false}>Female</Radio>
+            </Radio.Group>
+          )}
+        </FormItem>
+        <FormItem label="Age" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('age', {
+            initialValue: item.age,
+            rules: [
+              {
+                required: true,
+                type: 'number',
+              },
+            ],
+          })(<InputNumber min={18} max={100} />)}
+        </FormItem>
+        <FormItem label="Phone" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('phone', {
+            initialValue: item.phone,
+            rules: [
+              {
+                required: true,
+                pattern: /^1[34578]\d{9}$/,
+                message: 'The input is not valid phone!',
+              },
+            ],
+          })(<Input />)}
+        </FormItem>
+        <FormItem label="E-mail" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('email', {
+            initialValue: item.email,
+            rules: [
+              {
+                required: true,
+                pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
+                message: 'The input is not valid E-mail!',
+              },
+            ],
+          })(<Input />)}
+        </FormItem>
+        <FormItem label="Address" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('address', {
+            initialValue: item.address && item.address.split(' '),
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Cascader
+            size="large"
+            style={{ width: '100%' }}
+            options={city}
+            placeholder="Pick an address"
+          />)}
+        </FormItem>
+      </Form>
+    </Modal>
+  )
 }
 
 modal.propTypes = {

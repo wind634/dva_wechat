@@ -1,38 +1,32 @@
-import React,{ Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Switch } from 'antd'
 import styles from './Layout.less'
 import { config } from '../../utils'
 import Menus from './Menu'
 
-class Sider extends Component {
-  constructor(props) {
-    super(props);
+const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, changeOpenKeys, menu }) => {
+  const menusProps = {
+    menu,
+    siderFold,
+    darkTheme,
+    location,
+    navOpenKeys,
+    changeOpenKeys,
   }
-
-  render() {
-    const menusProps = {
-      menu:this.props.menu,
-      siderFold:this.props.siderFold,
-      darkTheme:this.props.darkTheme,
-      location:this.props.location,
-      navOpenKeys:this.props.navOpenKeys,
-      changeOpenKeys:this.props.changeOpenKeys,
-    }
-    return (
-      <div>
-        <div className={styles.logo}>
-          <img alt={'logo'} src={config.logo} />
-          {this.props.siderFold ? '' : <span>{config.name}</span>}
-        </div>
-        <Menus {...menusProps} />
-        {!this.props.siderFold ? <div className={styles.switchtheme}>
-          <span><Icon type="bulb" />Switch Theme</span>
-          <Switch onChange={this.props.changeTheme} defaultChecked={this.props.darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
-        </div> : ''}
+  return (
+    <div>
+      <div className={styles.logo}>
+        <img alt={'logo'} src={config.logo} />
+        {siderFold ? '' : <span>{config.name}</span>}
       </div>
-    )
-  }
+      <Menus {...menusProps} />
+      {!siderFold ? <div className={styles.switchtheme}>
+        <span><Icon type="bulb" />Switch Theme</span>
+        <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
+      </div> : ''}
+    </div>
+  )
 }
 
 Sider.propTypes = {

@@ -1,29 +1,21 @@
-import React,{ Component }  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './weather.less'
 
-class Weather extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (<div className={styles.weather}>
-      <div className={styles.left}>
-        <div className={styles.icon} style={{
-        backgroundImage: `url(${this.props.icon})`,
+function Weather ({ city, icon, dateTime, temperature, name }) {
+  return (<div className={styles.weather}>
+    <div className={styles.left}>
+      <div className={styles.icon} style={{
+        backgroundImage: `url(${icon})`,
       }} />
-        <p>{this.props.name}</p>
-      </div>
-      <div className={styles.right}>
-        <h1 className={styles.temperature}>{`${this.props.temperature}°`}</h1>
-        <p className={styles.description}>{this.props.city},{this.props.dateTime}</p>
-      </div>
-    </div>)
-  }
-
+      <p>{name}</p>
+    </div>
+    <div className={styles.right}>
+      <h1 className={styles.temperature}>{`${temperature}°`}</h1>
+      <p className={styles.description}>{city},{dateTime}</p>
+    </div>
+  </div>)
 }
-
 
 Weather.propTypes = {
   city: PropTypes.string,

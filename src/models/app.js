@@ -32,7 +32,7 @@ export default {
 
     *query ({
       payload,
-      }, { call, put }) {
+    }, { call, put }) {
       const data = yield call(query, parse(payload))
       if (data.success && data.user) {
         yield put({
@@ -55,7 +55,7 @@ export default {
 
     *logout ({
       payload,
-      }, { call, put }) {
+    }, { call, put }) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
         yield put({ type: 'query' })
@@ -66,7 +66,7 @@ export default {
 
     *changeNavbar ({
       payload,
-      }, { put, select }) {
+    }, { put, select }) {
       const { app } = yield(select(_ => _))
       const isNavbar = document.body.clientWidth < 769
       if (isNavbar !== app.isNavbar) {

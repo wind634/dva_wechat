@@ -197,13 +197,13 @@ export default {
   effects: {
     *query ({
       payload,
-      }, { call, put }) {
+    }, { call, put }) {
       const data = yield call(query, parse(payload))
       yield put({ type: 'queryWeather', payload: { ...data } })
     },
     *queryWeather ({
       payload,
-      }, { call, put }) {
+    }, { call, put }) {
       const myCityResult = yield call(myCity, { flg: 0 })
       const result = yield call(queryWeather, { cityCode: myCityResult.selectCityCode })
       const weather = zuimei.parseActualData(result.data.actual)

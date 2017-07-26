@@ -1,4 +1,4 @@
-import React,{ Component }  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, Tag } from 'antd'
 import styles from './recentSales.less'
@@ -23,37 +23,30 @@ const status = {
   },
 }
 
-class RecentSales extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const columns = [
-      {
-        title: 'NAME',
-        dataIndex: 'name',
-      }, {
-        title: 'STATUS',
-        dataIndex: 'status',
-        render: text => <Tag color={status[text].color}>{status[text].text}</Tag>,
-      }, {
-        title: 'DATE',
-        dataIndex: 'date',
-        render: text => new Date(text).format('yyyy-MM-dd'),
-      }, {
-        title: 'PRICE',
-        dataIndex: 'price',
-        render: (text, it) => <span style={{ color: status[it.status].color }}>${text}</span>,
-      },
-    ]
-    return (
-      <div className={styles.recentsales}>
-        <Table pagination={false} columns={columns} rowKey={(record, key) => key} dataSource={this.props.data.filter((item, key) => key < 5)} />
-      </div>
-    )
-  }
-
+function RecentSales ({ data }) {
+  const columns = [
+    {
+      title: 'NAME',
+      dataIndex: 'name',
+    }, {
+      title: 'STATUS',
+      dataIndex: 'status',
+      render: text => <Tag color={status[text].color}>{status[text].text}</Tag>,
+    }, {
+      title: 'DATE',
+      dataIndex: 'date',
+      render: text => new Date(text).format('yyyy-MM-dd'),
+    }, {
+      title: 'PRICE',
+      dataIndex: 'price',
+      render: (text, it) => <span style={{ color: status[it.status].color }}>${text}</span>,
+    },
+  ]
+  return (
+    <div className={styles.recentsales}>
+      <Table pagination={false} columns={columns} rowKey={(record, key) => key} dataSource={data.filter((item, key) => key < 5)} />
+    </div>
+  )
 }
 
 RecentSales.propTypes = {
